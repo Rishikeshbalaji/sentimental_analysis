@@ -1,5 +1,8 @@
 
 import string
+from collections import Counter
+import matplotlib.pyplot as plt
+
 read_text= open("read.txt", encoding='utf-8').read()
 print(read_text)
 lower_case=read_text.lower()
@@ -26,3 +29,17 @@ for word in token_text:
     if word not in stop_words:
         finnel_text.append(word)
         print(finnel_text)
+ with open('emotions.txt', 'r') as file:
+    for line in file:
+        print(file)
+print(finnel_text)
+w = Counter(finnel_text)
+print(w)
+
+# Plotting the emotions on the graph
+
+fig, ax1 = plt.subplots()
+ax1.bar(w.keys(), w.values())
+fig.autofmt_xdate()
+plt.savefig('graph.png')
+plt.show()
